@@ -11,6 +11,7 @@ function Entity:new(name, x, y, w, h)
   self.image = nil
   self.remove = false
   self.is_player = false
+  self.direction = "down"
   self.state  = nil
   self.idle_state = "down"
   self.frame = 1
@@ -56,20 +57,8 @@ function Entity:update(dt)
 end
 
 function Entity:draw()
-  if self.image then
-    if self.state then
-      local ox, oy, sx, sy, kx, ky = 0, 0, 1, 1, 0, 0
-      if self.anim[self.state].flipped then
-        local _,_,w,h = self.chunk:getViewport()
-        sx = sx * -1
-        ox = w - ox
-        kx = kx * -1
-        ky = ky * -1
-      end
-      love.graphics.draw(self.anim[self.state].image, self.chunk, self.x, self.y, 0, sx, sy, ox, oy, kx, ky)
-    else
-      love.graphics.draw(self.image, self.x, self.y)
-    end
+  if self.anim ~= nil then
+    self.anim[self.state]:draw(self.image, self.x, self.y)
   end
 end
 

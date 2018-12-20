@@ -21,6 +21,7 @@ end
 
 function Game:on_enter()
 	self:load_map("map1")
+	Moan.new({"Polter", Color.Blue2}, {"Welcome to the game"})
 end
 
 function Game:load_map(f)
@@ -87,13 +88,11 @@ function Game:update(dt)
 	if input:down "right" then player:move_right()
 	elseif input:down "left" then player:move_left()
 	elseif input:down "up" then player:move_up()
-	elseif input:down "down" then player:move_down()
-	else player.moving = false end
+	elseif input:down "down" then player:move_down() end
+	--else player.state = "idle_" .. player.direction end
 
+	if input:pressed "action" then player:attack() end
 	if input:pressed "cmsg" then Moan.selectPressed() end
-	if input:pressed "action" then
-		Moan.new({"Polter", Color.Blue2}, {"Cool, I found some shit in this jar"})
-	end
 	if input:pressed "back" then
 		Song.song1:play()
 	end
