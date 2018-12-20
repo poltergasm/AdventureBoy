@@ -1,7 +1,7 @@
 local sti = require "lib.sti"
 local bump = require "lib.bump"
-local Moan = require "lib.Moan"
 local Entity = require "lib.Entity"
+local Transfer = require "ents.Transfer"
 local Player = require "ents.Player"
 local Scene = require "lib.Scene"
 local Game  = Scene:extends()
@@ -12,11 +12,6 @@ function Game:new(...)
 	math.randomseed(os.time())
 	Game.super.new(self, ...)
 	love.physics.setMeter(48)
-	Moan.font = Font.Main
-	Moan.typeSound = Sound.TypeSound
-	Moan.optionOnSelectSound = Sound.OptionSelect
-	Moan.optionSwitchSound = Sound.OptionSwitch
-	Moan.autoWrap = true
 end
 
 function Game:on_enter()
@@ -36,10 +31,9 @@ function Game:load_map(f)
 			--name, x, y, w, h, max_vel_x, max_vel_y, mass, speed
 			player = Player("ent_player", v.x, v.y, 40, 48)
 			self.entity_mgr:add(player)
-		elseif v.name == "enemy" then
-			local enemy = Entity("ent_enemy", v.x, v.y, 48, 48)
-			enemy.is_enemy = true
-			self.entity_mgr:add(enemy)
+		elseif v.name == "exit" then
+			local transfer = Transfer("ent_exit", v.x, v.y, 48, 48)
+			self.entity_mgr:add(transfer)
 		end
 	end
 end
@@ -54,10 +48,7 @@ function Game:check_cols(ent, cols, idx, dt)
       ent:die()
     end
 
-    if ent.is_dynamic then
-      if ent.collides ~= nil then ent:collides(this, other, dt) end
-      ent:check_cols(this, other)
-    end
+    if ent.collides ~= nil then ent:collides(this, other, dt) end
   end
 end
 

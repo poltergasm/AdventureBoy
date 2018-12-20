@@ -91,6 +91,12 @@ function Player:take_life()
   Lives = Lives - 1
 end
 
+function Player:collides(normal, other, dt)
+  if other.name == "ent_exit" then
+    other:on_touch()
+  end
+end
+
 function Player:update(dt)
   Player.super.update(self, dt)
   self.anim[self.state]:update(dt)

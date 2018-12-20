@@ -1,5 +1,7 @@
 local Throttle = require "lib.Throttle"
 local Baton    = require "lib.Baton"
+local Moan = require "lib.Moan"
+
 require "lib.Utils"
 
 input = Baton.new {
@@ -46,7 +48,12 @@ function love.load()
 	love.window.setMode(768, 768)
 	love.graphics.setFont(Font.Main)
 	load_sounds()
-
+	Moan.font = Font.Main
+	Moan.typeSound = Sound.TypeSound
+	Moan.optionOnSelectSound = Sound.OptionSelect
+	Moan.optionSwitchSound = Sound.OptionSwitch
+	Moan.autoWrap = true
+	
 	SceneManager:add({
 		["SGame"]  = require "scenes.Game"()
 	})
