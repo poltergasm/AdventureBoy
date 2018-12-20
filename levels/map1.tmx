@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="120" height="37" tilewidth="8" tileheight="8" infinite="0" nextlayerid="5" nextobjectid="3">
+ <tileset firstgid="1" name="tiles" tilewidth="8" tileheight="8" tilecount="6" columns="2">
+  <image source="../assets/gfx/tiles.png" width="16" height="24"/>
+ </tileset>
+ <layer id="1" name="Background" width="120" height="37">
+  <data encoding="base64" compression="zlib">
+   eJztw8EJAAAMA6H7ZP+Vu0dRcNVUVVVVVVVVVVVVVVVVVVVVVR8+sZ9WuQ==
+  </data>
+ </layer>
+ <layer id="2" name="Floor" width="120" height="37">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt19EKgCAQRNGy/v+b66FQZGPdKKvpHtiHJKxhCHIYAAAAAAAAAAAAAAAK5qdfALeiX230q41+tan3q57Po55fPZ9HPb96Ps/X8qfg/V/Ld7Xe+ad1xm129fWRVEwr+r1PqmasZte67o2FfrWp5/Mo5i+/Z8V8EYr56TdTyV/+c9Fv1jt/9P/X28tCv1mP/JFOvbNSyz70m0XzT41rZ75T67xj7R3Z4+/9Rs+YZ8+hPZ5rzd/7BQC80wL+pwEG
+  </data>
+ </layer>
+ <layer id="3" name="Scenery" width="120" height="37">
+  <data encoding="base64" compression="zlib">
+   eJztw7EJAAAIA7CC///sC13FBJIAAAAAAAAAAAAAAAAAAABw1RQB4LMFBWMAHA==
+  </data>
+ </layer>
+ <objectgroup id="4" name="Objects" opacity="1.38778e-16">
+  <object id="1" name="start" x="16" y="248" width="8" height="8"/>
+  <object id="2" name="enemy" x="96" y="256" width="8" height="8"/>
+ </objectgroup>
+</map>
